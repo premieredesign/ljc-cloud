@@ -1,0 +1,30 @@
+
+version: "3.6"
+services:          
+             
+  ljc-client:
+    image: "cmjsoftware1/ljc-website"
+    container_name: "ljc-website"
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - ./client:/app/client
+           
+  ljc-api:
+    image: "cmjsoftware1/ljc-api-srv"
+    container_name: "ljc-api-srv"
+    restart: always
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    volumes:
+      - ./api:/app/api
+          
+networks:
+  default:
+    driver: bridge        
+            
